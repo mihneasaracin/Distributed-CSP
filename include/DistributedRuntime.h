@@ -31,13 +31,13 @@ namespace DistributedRuntime{
     void init();
     std::thread channelWorker;
     static std::atomic_bool finished;
+    static int channelCount = 0;
 
     template <class T>
     class DistributedChannelUnbounded {
 
         protected:
             ChannelUnbounded<T>* localChannel;
-            static int channelCount;
             int channelID = -1;
             int maxsize;
             int currentProc;
@@ -76,8 +76,8 @@ namespace DistributedRuntime{
             DistributedChannelBounded(): DistributedChannelUnbounded <T>(1){}
     };
 
-    template <class T>
-    int DistributedChannelUnbounded<T>::channelCount = 0;
+//    template <class T>
+//    int DistributedChannelUnbounded<T>::channelCount = 0;
 
 
     template <class T>

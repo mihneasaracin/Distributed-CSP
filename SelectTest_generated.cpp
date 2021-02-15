@@ -65,9 +65,11 @@ channel1.read(&s, false);
 }
 
 // Ran with:  mpirun  --oversubscribe -np 2 3
+// should give error bc we write on a closed channel
 void example3(){
     std::cout << "Run example3()" << std::endl;
     DistributedRuntime::DistributedChannelUnbounded<int> channel1(3);
+    DistributedRuntime::DistributedChannelUnbounded<std::string> channel2(4);
     DistributedRuntime::run();
     if (MPIUtils::getCurrentProc() == 0) {
         channel1.write(2);

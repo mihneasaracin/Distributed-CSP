@@ -1,0 +1,72 @@
+Requirements:
+=============================
+
+0. Team of 1-4 people.
+1. Related work - study the related work in the field and make a summary of at least 4 papers.
+2. Provide an implementation for the problem chosen and a document explaining the architecture, algorithm used, dataflow, etc.
+   Open-source on github
+3. Analysis:
+    - profiling
+    - If applicable - make an analysis how parallelizable is the problem ; consider the grain size, number of cores used, etc.
+      else - how usable is (pictures, videos, etc).
+
+
+Project ideas
+=============================
+
+
+1. Leverage GPU support for ML using Compute shaders and Vulkan
+Since GPUs can perform math computations significantly faster than CPUs, it is a known fact that both training and inference of machine learning models can benefit from their proper usage. However, since general GPU programming support is limited, many of the existing GPU devices are not used at all by the common machine learning frameworks. It is especially the case for game consoles, mobile devices, and some specific GPU vendors on computer machines. Our work focuses on implementing an architecture that acts like a middleware between common machine learning frameworks and GPUs, using compute shaders at its core.
+
+Your job is to:
+ - Choose a ML problem (e.g. one in computer vision, RL, etc. that uses at least 3 different kind of layers)
+ - Continue the implementation in Lab 1-3 folder (over the custom framework) by using compute shaders kernels. My advice: do it in CUDA first like we do it there then jump to compute shaders.
+
+
+
+2. GPU scheduler for AGAPIA
+    - Build a scheduler that is able to execute jobs on GPU
+    - Target: Execute a dynamic programming in AGAPIA using GPU support / or something that really uses GPU
+
+      You might also want to take a look at AGAPIA explanations and documentation:
+        Presentation movies:
+        https://fmiunibuc-my.sharepoint.com/:v:/g/personal/ciprian_paduraru_fmi_unibuc_ro/EbZvcMJ9t0JNlpEqkmLTc08BXO93PWPTyFlLHllJIBUgFw?e=i8za5a (part 1)
+	https://fmiunibuc-my.sharepoint.com/:v:/g/personal/ciprian_paduraru_fmi_unibuc_ro/ETHI7h57uqBBroJXMXVdLFsBYgBrYL6AYEO5FV2JkNiyqA?e=y3R8TG (part 2)
+
+        Full doc for backend:
+  	https://fmiunibuc-my.sharepoint.com/:b:/g/personal/ciprian_paduraru_fmi_unibuc_ro/EYzjtQEgcllAmh4JTATTmnUBQxa_7Dq6cCFObVWE9Q82qQ?e=PHhe8y
+
+
+3. Scheduling for dataflow computing using AGAPIA
+    - Functional units in a dataflow computing are initially assigned static to hardware nodes / processes
+    - Think of a way that dynamically move the functional units between processes that maximizes the throughput.
+      Example: If you have 2 units that communicate big chunks of data between, maybe they should be on the same process.
+    - The implementation of this strategy must be done in AGAPIA GitHub: https://github.com/AGAPIA/CompilerAndTools
+
+      You might also want to take a look at AGAPIA explanations and documentation:
+        Presentation movies:
+        https://fmiunibuc-my.sharepoint.com/:v:/g/personal/ciprian_paduraru_fmi_unibuc_ro/EbZvcMJ9t0JNlpEqkmLTc08BXO93PWPTyFlLHllJIBUgFw?e=i8za5a (part 1)
+	https://fmiunibuc-my.sharepoint.com/:v:/g/personal/ciprian_paduraru_fmi_unibuc_ro/ETHI7h57uqBBroJXMXVdLFsBYgBrYL6AYEO5FV2JkNiyqA?e=y3R8TG (part 2)
+
+        Full doc for backend:
+  	https://fmiunibuc-my.sharepoint.com/:b:/g/personal/ciprian_paduraru_fmi_unibuc_ro/EYzjtQEgcllAmh4JTATTmnUBQxa_7Dq6cCFObVWE9Q82qQ?e=PHhe8y
+
+4. CSP Parallelism in distributed environments.
+
+    Check my presentation for a review in Go language for CSP parallelism then check our published implementation over CSP in C++ (state of the art at this moment):
+https://www.researchgate.net/publication/327332059_Parallelism_in_C_Using_Sequential_Communicating_Processes
+
+    This project proposes a continuation of the paper above but using MPI (or any distributed execution library you want, but in C++) for each CSP specific operation.
+
+5. CPU and GPU collaborative library
+   - Try to unify the ISPC and either Cuda/OpenCL in an API that is able to provide
+   parallelism on both without user knowing that they actually collaborate (i.e. transparent API calls)
+   Bonus: try to use CPU + multi-GPU too.
+
+
+=============
+
+Send me email with title PPC2 containing:
+
+- Teams of 1-4 (names)
+- 3 Project preferences in the desired order

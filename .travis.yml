@@ -1,0 +1,24 @@
+language: python
+python:
+  - "3.6.2"
+
+os:
+  - linux
+
+env:
+  - PIPENV_IGNORE_VIRTUALENVS=1
+
+install:
+  - pip3 install pipenv
+  - cd src/parser_select
+  - pipenv install --dev
+
+script:
+  - pipenv run python parser_select.py "SelectTest.cpp"
+  - pipenv run pytest -vv
+  - cd ../common
+  # - make
+
+notifications:
+    email: false
+

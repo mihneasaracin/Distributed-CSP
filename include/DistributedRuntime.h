@@ -76,10 +76,6 @@ namespace DistributedRuntime{
             DistributedChannelBounded(): DistributedChannelUnbounded <T>(1){}
     };
 
-//    template <class T>
-//    int DistributedChannelUnbounded<T>::channelCount = 0;
-
-
     template <class T>
     void DistributedChannelUnbounded<T>::init(int sz, int id){
         maxsize = sz;

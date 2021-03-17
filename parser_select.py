@@ -30,7 +30,7 @@ class SelectParser(object):
     DEFAULT_CASE_NAME: str = "default"
     _SEPARATORS_CODE_BLOCK = SeparatorsCodeBlock(open="{", close="}")
     INDICES_CASE = IndicesCase(receiver=0, sender=1, content=2)
-    FILE_ENCODING: str = "utf-16-le"
+    FILE_ENCODING: str = "utf-8"
 
     # case message1 <- channel1:   or    case channel1 <- message1:
     # {
